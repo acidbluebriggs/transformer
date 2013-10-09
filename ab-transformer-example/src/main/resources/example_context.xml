@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="propertyInvoker" class="com.acidblue.transformer.resource.PropertyInvocationHandler">
+
+        <property name="factory" ref="resourceFactory"/>
+
+        <property name="typeMapping">
+            <map>
+                <entry key="java.lang.String" value="text"/>
+                <entry key="java.awt.Color" value="color"/>
+                <entry key="com.acidblue.transformer.resource.ColorIcon" value="colorIcon"/>
+                <entry key="java.lang.Integer" value="int"/>
+                <entry key="java.lang.Boolean" value="boolean"/>
+                <entry key="java.lang.Float" value="float"/>
+                <entry key="java.lang.Double" value="double"/>
+                <entry key="java.lang.Long" value="long"/>
+                <entry key="javax.swing.Icon" value="icon"/>
+                <entry key="java.lang.Enum" value="text"/>
+            </map>
+        </property>
+
+        <property name="defaultType" value="text"/>
+
+        <property name="decoders">
+            <map>
+                <entry key="java.lang.Integer">
+                    <bean class="com.acidblue.transformer.resource.transformer.IntegerTransformable"/>
+                </entry>
+
+                <entry key="java.lang.Double">
+                    <bean class="com.acidblue.transformer.resource.transformer.DoubleTransformable"/>
+                </entry>
+
+                <entry key="java.lang.Float">
+                    <bean class="com.acidblue.transformer.resource.transformer.FloatTransformable"/>
+                </entry>
+
+                <entry key="java.lang.Boolean">
+                    <bean class="com.acidblue.transformer.resource.transformer.BooleanTransformable"/>
+                </entry>
+
+                <entry key="java.lang.Long">
+                    <bean class="com.acidblue.transformer.resource.transformer.LongTransformable"/>
+                </entry>
+
+                <entry key="java.lang.String">
+                    <bean class="com.acidblue.transformer.resource.transformer.StringTransformable"/>
+                </entry>
+
+                <entry key="java.awt.Color">
+                    <bean class="com.acidblue.transformer.resource.transformer.ColorTransformable"/>
+                </entry>
+
+                <entry key="javax.swing.Icon">
+                    <bean class="com.acidblue.transformer.resource.transformer.IconStringTransformable"/>
+                </entry>
+
+                <entry key="com.acidblue.transformer.resource.ColorIcon">
+                    <bean class="com.acidblue.transformer.resource.transformer.ColorIconTransformable"/>
+                </entry>
+
+            </map>
+        </property>
+    </bean>
+
+    <bean id="resolver" class="com.acidblue.transformer.resource.Resolver">
+        <property name="invoker" ref="propertyInvoker"/>
+    </bean>
+
+    <bean id="abstractResourceLoader" class="com.acidblue.transformer.resource.AbstractResourceLoader" abstract="true">
+        <property name="resourceBundleBaseName" value="com.acidblue.transformer.example.Example"/>
+    </bean>
+
+    <bean id="resourceFactory" class="com.acidblue.transformer.resource.FactoryBackedResourceLoader">
+
+        <property name="factory">
+            <bean class="com.acidblue.transformer.resource.ResourceLoaderFactory">
+                <property name="resourceLoaders">
+                    <map>
+
+                        <entry key="text">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="text"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="color">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="color"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="colorIcon">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="colorIcon"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="int">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="int"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="boolean">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="boolean"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="float">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="float"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="double">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="double"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="long">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="long"/>
+                            </bean>
+                        </entry>
+
+                        <entry key="icon">
+                            <bean class="com.acidblue.transformer.resource.loader.StringLoader"
+                                  parent="abstractResourceLoader">
+                                <property name="binding" value="icon"/>
+                            </bean>
+                        </entry>
+                    </map>
+                </property>
+            </bean>
+
+        </property>
+    </bean>
+
+    <bean id="resolverFactory" class="com.acidblue.transformer.resource.ResolverFactory" factory-method="initialize">
+        <constructor-arg ref="resolver"/>
+    </bean>
+
+</beans>

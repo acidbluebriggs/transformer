@@ -1,0 +1,37 @@
+# Maven target dir
+target/
+
+#Unix nohup
+nohup.out
+
+#Log files that might get creatd
+*.log
+
+# IntelliJ files
+*.iml
+*.ipr
+.idea/
+out/
+
+#Bamboo files
+build-number.txt
+
+#ActiveMQ directories
+*activemq-data
+
+#Temp files
+~
+*~
+
+#Apple Junk
+.DS_Store
+
+#Emacs backups
+*.~*~
+\#*\#
+*.~*~
+
+# Emacs backups of hidden files, like ".gitignore.~3~"
+.*.~*~
+.\#*
+
