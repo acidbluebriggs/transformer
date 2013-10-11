@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * <p/>
  * For each enum value, there are exactly 2 entries within the {@link #defs()} parameter. Starting from {@code def[i]},
  * where {@code i=0}, {@code i} will aways be a key which maps to the enum's constant name and {@code [i+1]} will always
- * be the value of {@code i}.
+ * be the value of {@code i} (a plist).
  */
 @Documented
 @Target({ElementType.PARAMETER})
