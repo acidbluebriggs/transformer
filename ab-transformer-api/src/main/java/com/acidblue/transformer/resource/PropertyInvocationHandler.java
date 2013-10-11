@@ -361,8 +361,6 @@ public class PropertyInvocationHandler implements InvocationHandler {
                 String.format(METHOD_KEY_FORMAT, currentMethod.getDeclaringClass().getName(), currentMethod.getName()) :
                 String.format(FOR_METHOD_KEY_FORMAT, currentMethod.getDeclaringClass().getName(),
                         currentMethod.getName(), key);
-
-
     }
 
     private Class currentParameterClass() {

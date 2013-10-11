@@ -1,6 +1,6 @@
 package com.acidblue.transformer.resource.annotationprocessor;
 
-import com.acidblue.transformer.resource.Default;
+import com.acidblue.transformer.resource.*;
 import com.acidblue.transformer.resource.ResourceKeyBuilder;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -38,9 +38,13 @@ import java.util.Set;
  *
  */
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-@SupportedAnnotationTypes({"Resource", "DefaultParam"})
+@SupportedAnnotationTypes(
+        { "com.acidblue.transformer.resource.Default"
+        , "com.acidblue.transformer.resource.Resource"
+        , "com.acidblue.transformer.resource.DefaultParam"})
 public class ListDefaultsAnnotationProcessorFactory extends AbstractProcessor {
 
+    //todo, need to make this available to configure as an environment property
     /**
      * The default path and filename for the output of this annotation processor processor.
      */
@@ -249,7 +253,6 @@ public class ListDefaultsAnnotationProcessorFactory extends AbstractProcessor {
                 final Messager messager = processingEnv.getMessager();
                 messager.printMessage(Diagnostic.Kind.WARNING,
                         String.format(
-                                "@DefaultParam defined in class '%s' contains an uneven amount of 'def' entries." +
                                         " Unable to provide the default values for annotated method %s",
                                 className, methodName));
             } else {

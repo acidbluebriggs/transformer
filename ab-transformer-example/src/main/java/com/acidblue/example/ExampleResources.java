@@ -15,7 +15,7 @@ import java.awt.Color;
 @Resource
 public interface ExampleResources {
 
-    @Default(value = "#AABBCC")
+    @Default(value = "#CCCCCC")
     Color exampleColor();
 
     @Default(value = "A (Default) String")
