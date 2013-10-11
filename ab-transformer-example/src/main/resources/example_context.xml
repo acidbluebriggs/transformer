@@ -71,7 +71,7 @@
     </bean>
 
     <bean id="abstractResourceLoader" class="com.acidblue.transformer.resource.AbstractResourceLoader" abstract="true">
-        <property name="resourceBundleBaseName" value="com.acidblue.transformer.example.Example"/>
+        <property name="resourceBundleBaseName" value="com.acidblue.transformer.resources.acidblue"/>
     </bean>
 
     <bean id="resourceFactory" class="com.acidblue.transformer.resource.FactoryBackedResourceLoader">
