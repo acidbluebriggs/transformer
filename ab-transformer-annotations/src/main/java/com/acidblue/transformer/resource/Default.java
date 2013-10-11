@@ -24,11 +24,17 @@ public @interface Default {
 
     /**
      * An optional string describing the the annotated method.  This is primarily used for
-     * documentation documentation builders.
+     * documentation builders.
      *
      * @return A string describing the annotated field
      */
     String desc() default  "";
 
+    /**
+     * An optional string which will be appended the value to the resource bundle's generated key.
+     * Not recommended as the key generation should be sufficient.
+     *
+     * @return A string which may be of zero length
+     */
     String key() default "";
 }
