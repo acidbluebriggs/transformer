@@ -23,11 +23,9 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                        <testSource>1.7</testSource>
-                        <testTarget>1.7</testTarget>
+                        <release>17</release>
                     </configuration>
                 </plugin>
 
@@ -48,11 +46,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <junit.version>4.8.1</junit.version>
-        <slf4j.version>1.7.1</slf4j.version>
+        <slf4j.version>2.0.17</slf4j.version>
         <log4j.version>1.2.13</log4j.version>
         <commons-lang.version>3.1</commons-lang.version>
-        <!--<commons-beanutils.version>1.8.3</commons-beanutils.version>-->
-
 
     </properties>
 
@@ -68,7 +64,7 @@
 
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+            <artifactId>slf4j-reload4j</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
 

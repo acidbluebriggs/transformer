@@ -37,7 +37,7 @@ import java.util.Set;
  * TODO Documentation
  *
  */
-@SupportedSourceVersion(SourceVersion.RELEASE_7)
+@SupportedSourceVersion(SourceVersion.RELEASE_17)
 @SupportedAnnotationTypes(
         { "com.acidblue.transformer.resource.Default"
         , "com.acidblue.transformer.resource.Resource"

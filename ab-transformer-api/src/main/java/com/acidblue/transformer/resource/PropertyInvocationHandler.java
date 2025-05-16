@@ -158,7 +158,7 @@ public class PropertyInvocationHandler implements InvocationHandler {
                 final String[] params = currentDefaultParameterAnnotation().lookup();
 
                 for (int i = 0; i < params.length; i++) {
-                    builder.append((String) MethodUtils.invokeExactMethod(currentParameter(), params[i], null));
+                    builder.append((String) MethodUtils.invokeExactMethod(currentParameter(), params[i]));
                     if (i < params.length - 1) {
                         builder.append(".");
                     }
